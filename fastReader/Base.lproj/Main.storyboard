@@ -36,6 +36,13 @@
                                     <segue destination="ISv-fB-IUi" kind="show" identifier="readSegue" id="gkH-RN-BG8"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lifetime saved:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vdS-eG-neQ">
+                                <rect key="frame" x="20" y="88" width="374" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -45,11 +52,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="readTextField" destination="Hk3-4v-egd" id="uYY-Gi-yuL"/>
+                        <outlet property="totalTimeLabel" destination="vdS-eG-neQ" id="piY-Wp-C4S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="80" y="100"/>
+            <point key="canvasLocation" x="79.710144927536234" y="99.776785714285708"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V7s-ha-fCB">
@@ -89,12 +97,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You saved: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="984-0s-2Ez">
+                                <rect key="frame" x="20" y="165" width="374" height="73"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="saved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMH-0e-nPM">
+                                <rect key="frame" x="20" y="246" width="374" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="7wR-Zd-1iI"/>
                     </view>
                     <connections>
+                        <outlet property="savedTimeLabel" destination="zMH-0e-nPM" id="AAq-JH-Ujx"/>
                         <outlet property="secondomer" destination="pFf-Gm-gH0" id="UFo-82-ZeU"/>
+                        <outlet property="timeSavedLabel" destination="984-0s-2Ez" id="BQW-oE-vpQ"/>
                         <outlet property="wordLabel" destination="egX-s9-KaP" id="f3D-FY-iK4"/>
                     </connections>
                 </viewController>

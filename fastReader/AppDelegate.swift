@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  fastReader
-//
-//  Created by Anton Asetski on 11/5/19.
-//  Copyright © 2019 Anton Asetski. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain

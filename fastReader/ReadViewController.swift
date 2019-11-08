@@ -1,18 +1,18 @@
-//
-//  ReadViewController.swift
-//  fastReader
-//
-//  Created by Anton Asetski on 11/5/19.
-//  Copyright © 2019 Anton Asetski. All rights reserved.
-//
-
 import UIKit
+
+//Pass saved time to ViewController
+protocol TimeDelegate {
+    func sentTotalTime(time : Double)
+}
 
 class ReadViewController: UIViewController {
     
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var secondomer: UILabel!
+    @IBOutlet weak var timeSavedLabel: UILabel! // first
+    @IBOutlet weak var savedTimeLabel: UILabel! // second
     
+    var delegate: TimeDelegate?
     var words = String()
     
     override func viewDidLoad() {
@@ -38,7 +38,12 @@ class ReadViewController: UIViewController {
             
         }
         
+        //MARK: Words changing/data sending.
         func startRead() {
+            
+            let startDate = Date()
+            let characterCount = Double(words.count)
+            let defaultTime = characterCount / 25
             
             DispatchQueue.global(qos: .default).async {
                 for word in self.words.split(separator: " ") {
@@ -47,10 +52,22 @@ class ReadViewController: UIViewController {
                     }
                     usleep(150000)
                 }
+                let endDate = Date()
+                let timeInterval = endDate.timeIntervalSince(startDate)
+                
+                DispatchQueue.main.async {
+                    
+                    self.timeSavedLabel.isHidden = false
+                    self.savedTimeLabel.isHidden = false
+                    self.timeSavedLabel.text = "Time passed: " + String(format: "%.1f", timeInterval) + " sec."
+                    self.savedTimeLabel.text = String(format: "%.1f", defaultTime - timeInterval) + " sec saved."
+                    
+                    if self.delegate != nil {
+                        self.delegate?.sentTotalTime(time: defaultTime - timeInterval)
+                    }
+                }
             }
-            
         }
     }
-    
 }
 

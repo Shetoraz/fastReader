@@ -1,25 +1,28 @@
-//
-//  ViewController.swift
-//  fastReader
-//
-//  Created by Anton Asetski on 11/5/19.
-//  Copyright © 2019 Anton Asetski. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, TimeDelegate {
     
     @IBOutlet weak var readTextField: UITextView!
+    @IBOutlet weak var totalTimeLabel: UILabel!
+    
+    var totalTimeSaved = Double()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         readTextField.layer.cornerRadius = 20
+        
     }
     
     @IBAction func readButtonPressed(_ sender: UIButton) {
         
+    }
     
+    //Delegate method
+    func sentTotalTime(time: Double) {
+        
+        totalTimeSaved += time
+        totalTimeLabel.text = "Lifetime saved: " + String(format: "%.1f", totalTimeSaved) + " sec."
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -27,6 +30,7 @@ class ViewController: UIViewController {
         if segue.identifier == "readSegue" {
             
             if let readVC = segue.destination as? ReadViewController {
+                readVC.delegate = self
                 readVC.words = readTextField.text
             }
         }
